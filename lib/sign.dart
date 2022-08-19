@@ -98,7 +98,7 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                             fillColor: Colors.grey.shade100,
                             filled: true,
-                            hintText: 'ADMIN NAME',
+                            hintText: 'Username',
                             prefixIcon: Icon(Icons.person),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
@@ -120,7 +120,7 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                             fillColor: Colors.grey.shade100,
                             filled: true,
-                            hintText: 'EMAIL',
+                            hintText: 'Email',
                             prefixIcon: Icon(Icons.mail),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
@@ -141,8 +141,8 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                             fillColor: Colors.grey.shade100,
                             filled: true,
-                            hintText: 'PASSWORD',
-                            prefixIcon: Icon(Icons.lock),
+                            hintText: 'Password',
+                            prefixIcon: Icon(Icons.key),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
                           ),
@@ -158,12 +158,13 @@ class _signState extends State<sign> {
                       TextButton(
                         style: TextButton.styleFrom(
                             primary: Colors.white,
-                            backgroundColor: Color.fromARGB(255, 33, 243, 58),
-                            textStyle: TextStyle(fontSize: 30),
+                            backgroundColor: Colors.deepPurple,
+                            textStyle: TextStyle(
+                                fontSize: 21, fontWeight: FontWeight.bold),
                             elevation: 20,
-                            padding: EdgeInsets.all(20),
+                            padding: EdgeInsets.fromLTRB(90, 18, 90, 18),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0))),
+                                borderRadius: BorderRadius.circular(30.0))),
                         onPressed: () async {
                           checkvalidation(_formkey);
                           _register();
@@ -175,7 +176,7 @@ class _signState extends State<sign> {
                             Fluttertoast.showToast(msg: "MISMATCH FIELDS");
                           }
                         },
-                        child: Text("Sign In : ) "),
+                        child: Text("REGISTER"),
                       ),
                     ],
                   ),
