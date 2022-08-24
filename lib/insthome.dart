@@ -137,13 +137,8 @@ class _insthomeState extends State<insthome> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => instapprove(
-                                  userId: usermodel.uid,
-                                  instname: usermodel.Instname!,
-                                )));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => instapprove()));
                   },
                   child: Container(
                     decoration: BoxDecoration(

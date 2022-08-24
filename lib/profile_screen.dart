@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/approval.dart';
+import 'package:login/email.dart';
 import 'package:login/index.dart';
 
 import 'package:login/meet.dart';
@@ -226,6 +227,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       title: Text(user.email!),
                       subtitle: Text("EMAIL"),
                       trailing: Icon(Icons.send),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => email()));
+                      },
                     ),
                   ),
                 ],

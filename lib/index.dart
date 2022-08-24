@@ -26,7 +26,7 @@ class _IndexPageState extends State<IndexPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MEETINGS'),
+        title: Text('PRABHASH MEETINGS'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
