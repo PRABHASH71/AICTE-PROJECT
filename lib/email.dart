@@ -20,10 +20,11 @@ class _emailState extends State<email> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 176, 176),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         title: Text('A.I.C.T.E Email Desk'),
         centerTitle: true,
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
@@ -92,7 +93,7 @@ class _emailState extends State<email> {
               Material(
                 elevation: 10,
                 borderRadius: BorderRadius.circular(30),
-                color: Colors.blue,
+                color: Color.fromARGB(255, 10, 10, 11),
                 child: MaterialButton(
                   padding: EdgeInsets.fromLTRB(60, 15, 60, 15),
                   onPressed: () {
@@ -114,7 +115,7 @@ class _emailState extends State<email> {
 
   Future SendEmail() async {
     const serviceId = 'service_1r8hmgc';
-    const templateId = 'template_cetjwcf';
+    const templateId = 'template_msm99gg';
     const userId = '_Pfmg0CjH8HNbemws';
     final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
 

@@ -1,30 +1,24 @@
+import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:math';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
 import 'package:expandable/expandable.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/material.dart';
 
-class scheme extends StatefulWidget {
-  const scheme({Key? key}) : super(key: key);
+class help extends StatefulWidget {
+  const help({Key? key}) : super(key: key);
 
   @override
-  State<scheme> createState() => _schemeState();
+  State<help> createState() => _helpState();
 }
 
-class _schemeState extends State<scheme> {
+class _helpState extends State<help> {
   static final data1 =
-      'Scheme to foster cross-border partnerships focussed on creating a platform that opens the path for collaborative research between Canada and India to a wider pool of student talent in India.';
-
-  static final data4 =
-      'AICTE has decided to establish AICTE-IDEA (Idea Development, Evaluation & Application) Lab in AICTE approved institutions, encouraging students for application of science, technologies, engineering and mathematics (STEM) fundamentals towards enhanced hands-on experience, learning by doing and product visualisation.';
+      'follow the steps : login > go to meeting section > write your channel name > join as auidence';
   static final data2 =
-      'AICTE has approved AICTE – SWANATH SCHOLARSHIP SCHEME for children from any one of the following categories:Orphan Either or both parents died due to Covid-19 Wards of Armed Forces and Central Paramilitary Forces martyred in action (Shaheed)to provide them financial support of Rs. 50,000/- per annum for every year of study.';
-
+      'Yes ,admin  can schedule meetings as well as institutes can join broadcast as audience.';
   static final data3 =
-      'AICTE intends to seek applications for AICTEs LILAVATI AWARD-2021-22 based on the theme “Women Empowerment” from the eligible teams of AICTE approved institutions, who have undertaken remarkable intervention for the cause and made an impact that showcases their work under eight different sub-themes.';
-  final mainReference = FirebaseDatabase.instance.ref().child('Database');
+      'No,there is a seperate segment to join a meeting which is scheduled.';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,9 +28,9 @@ class _schemeState extends State<scheme> {
             appBar: AppBar(
               centerTitle: true,
               toolbarHeight: 80,
-              backgroundColor: Color.fromARGB(255, 9, 8, 9),
+              backgroundColor: Color.fromARGB(255, 16, 15, 16),
               title: const Text(
-                " SCHEMES",
+                "HELP DESK",
                 style: TextStyle(
                   fontSize: 30,
                 ),
@@ -45,27 +39,43 @@ class _schemeState extends State<scheme> {
             body: ListView(
               children: [
                 buildCard(
-                  'AICTE-MITACS GLOBALINK RESEARCH INTERNSHIP (GRI) SCHEME',
+                  'How to join video conferencing or broadcast ? ',
                 ),
                 buildCard1(
-                  'AICTE – SWANATH SCHOLARSHIP SCHEME',
+                  'Can I schedule meeting also on this platform ? ',
                 ),
                 buildCard3(
-                  'AICTE LILAVATI AWARD',
-                ),
-                buildCard4(
-                  'AICTE- IDEA LAB',
+                  'Can i join meeting to the app itself or use third party app ? ',
                 ),
               ],
             ),
-            backgroundColor: Color.fromARGB(255, 251, 250, 247),
+            backgroundColor: Color.fromARGB(255, 250, 248, 244),
           ),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(1),
               gradient: const LinearGradient(colors: [
-                Color.fromARGB(255, 188, 234, 164),
-                Color.fromARGB(255, 126, 221, 233)
+                Color.fromARGB(255, 236, 179, 221),
+                Color.fromARGB(255, 159, 152, 202)
               ])),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            dynamic conversationObject = {
+              'appId':
+                  '1c5df96d65a8e897e174a9d0251e35f86', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
+            };
+
+            KommunicateFlutterPlugin.buildConversation(conversationObject)
+                .then((clientConversationId) {
+              print("Conversation builder success : " +
+                  clientConversationId.toString());
+            }).catchError((error) {
+              print("Conversation builder error : " + error.toString());
+            });
+          },
+          tooltip: "Increment",
+          child: Icon(Icons.android_rounded),
+          backgroundColor: Colors.black,
         ),
       ),
     );
@@ -78,15 +88,11 @@ class _schemeState extends State<scheme> {
           elevation: 10,
           child: Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 169, 222, 136),
-                  Color.fromARGB(255, 159, 240, 233)
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(1),
+                gradient: const LinearGradient(colors: [
+                  Color.fromARGB(255, 236, 179, 221),
+                  Color.fromARGB(255, 159, 152, 202)
+                ])),
             child: ExpandablePanel(
               theme: ExpandableThemeData(
                 expandIcon: Icons.arrow_downward,
@@ -136,15 +142,11 @@ class _schemeState extends State<scheme> {
           elevation: 10,
           child: Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 188, 234, 164),
-                  Color.fromARGB(255, 126, 221, 233),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(1),
+                gradient: const LinearGradient(colors: [
+                  Color.fromARGB(255, 236, 179, 221),
+                  Color.fromARGB(255, 159, 152, 202)
+                ])),
             child: ExpandablePanel(
               theme: ExpandableThemeData(
                 expandIcon: Icons.arrow_downward,
@@ -194,15 +196,11 @@ class _schemeState extends State<scheme> {
           elevation: 10,
           child: Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 188, 234, 164),
-                  Color.fromARGB(255, 126, 221, 233)
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(1),
+                gradient: const LinearGradient(colors: [
+                  Color.fromARGB(255, 236, 179, 221),
+                  Color.fromARGB(255, 159, 152, 202)
+                ])),
             child: ExpandablePanel(
               theme: ExpandableThemeData(
                 expandIcon: Icons.arrow_downward,
@@ -222,64 +220,6 @@ class _schemeState extends State<scheme> {
               ),
               collapsed: Text(
                 data3,
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-                softWrap: true,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              expanded: Text(
-                List.generate(1, (_) => data3).join('\n\n'),
-                style: TextStyle(fontSize: 18),
-              ),
-              builder: (_, collapsed, expanded) => Padding(
-                padding: const EdgeInsets.all(10).copyWith(top: 0),
-                child: Expandable(
-                  collapsed: collapsed,
-                  expanded: expanded,
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-
-  Widget buildCard4(String title) => Padding(
-        padding: EdgeInsets.all(10),
-        child: Card(
-          shadowColor: Colors.black,
-          elevation: 10,
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 188, 234, 164),
-                  Color.fromARGB(255, 126, 221, 233)
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            child: ExpandablePanel(
-              theme: ExpandableThemeData(
-                expandIcon: Icons.arrow_downward,
-                collapseIcon: Icons.arrow_upward,
-                tapBodyToCollapse: true,
-                tapBodyToExpand: true,
-              ),
-              header: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              collapsed: Text(
-                data4,
                 style: TextStyle(
                   fontSize: 18,
                 ),

@@ -26,53 +26,63 @@ class _IndexPageState extends State<IndexPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PRABHASH MEETINGS'),
+        title: Text('MEETINGS'),
         centerTitle: true,
+        backgroundColor: Colors.black,
       ),
       body: SingleChildScrollView(
         child: Container(
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 40),
-              TextField(
-                controller: _channelController,
-                decoration: InputDecoration(
-                  errorText:
-                      _validateError ? 'Channel name is mandatory' : null,
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide(width: 1),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 40),
+                TextField(
+                  controller: _channelController,
+                  decoration: InputDecoration(
+                    errorText:
+                        _validateError ? 'Channel name is mandatory' : null,
+                    border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 61, 61, 61)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    hintText: 'Channel name',
                   ),
-                  hintText: 'Channel name',
                 ),
-              ),
-              RadioListTile(
-                title: Text('BroadCaster'),
-                onChanged: (ClientRole? value) {
-                  setState(() {
-                    _role = value;
-                  });
-                },
-                value: ClientRole.Broadcaster,
-                groupValue: _role,
-              ),
-              RadioListTile(
-                title: Text('Audience'),
-                onChanged: (ClientRole? value) {
-                  setState(() {
-                    _role = value;
-                  });
-                },
-                value: ClientRole.Audience,
-                groupValue: _role,
-              ),
-              ElevatedButton(
-                onPressed: onJoin,
-                child: Text('Join'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 40),
+                RadioListTile(
+                  title: Text('BroadCaster'),
+                  onChanged: (ClientRole? value) {
+                    setState(() {
+                      _role = value;
+                    });
+                  },
+                  value: ClientRole.Broadcaster,
+                  groupValue: _role,
                 ),
-              ),
-            ],
+                RadioListTile(
+                  title: Text('Audience'),
+                  onChanged: (ClientRole? value) {
+                    setState(() {
+                      _role = value;
+                    });
+                  },
+                  value: ClientRole.Audience,
+                  groupValue: _role,
+                ),
+                ElevatedButton(
+                  onPressed: onJoin,
+                  child: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black,
+                    minimumSize: Size(double.infinity, 40),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

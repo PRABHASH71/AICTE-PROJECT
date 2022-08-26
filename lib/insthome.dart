@@ -38,7 +38,7 @@ class _insthomeState extends State<insthome> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
-        backgroundColor: Color.fromARGB(255, 63, 5, 97),
+        backgroundColor: Color.fromARGB(255, 10, 3, 15),
         title: Text(
           "AICTE INSTITUTIONS",
           style: TextStyle(
@@ -62,9 +62,12 @@ class _insthomeState extends State<insthome> {
                     child: Container(
                       padding: EdgeInsets.all(90),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Color.fromARGB(255, 89, 95, 203),
-                      ),
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: const LinearGradient(colors: [
+                            Color.fromARGB(255, 240, 245, 248),
+                            Color.fromARGB(255, 94, 218, 234),
+                            Color.fromARGB(255, 76, 126, 235)
+                          ])),
                       child: Column(
                         children: [
                           Image.asset("assets/org.png"),
@@ -90,9 +93,12 @@ class _insthomeState extends State<insthome> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(255, 229, 10, 10),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
                     padding: EdgeInsets.all(90),
                     child: Column(
                       children: [
@@ -116,9 +122,12 @@ class _insthomeState extends State<insthome> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(255, 2, 141, 7),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
                     padding: EdgeInsets.all(90),
                     child: Column(
                       children: [
@@ -142,9 +151,12 @@ class _insthomeState extends State<insthome> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(255, 179, 8, 185),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
                     padding: EdgeInsets.all(90),
                     child: Column(
                       children: [
@@ -168,9 +180,12 @@ class _insthomeState extends State<insthome> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(255, 253, 164, 0),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
                     padding: EdgeInsets.all(90),
                     child: Column(
                       children: [
@@ -195,7 +210,10 @@ class _insthomeState extends State<insthome> {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(1),
-          gradient: const LinearGradient(colors: [Colors.red, Colors.yellow]),
+          gradient: const LinearGradient(colors: [
+            Color.fromARGB(255, 0, 0, 0),
+            Color.fromARGB(255, 0, 0, 0)
+          ]),
         ),
       ),
       drawer: Drawer(
@@ -207,9 +225,10 @@ class _insthomeState extends State<insthome> {
             children: <Widget>[
               DrawerHeader(
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: <Color>[
-                    Colors.orange,
-                    Colors.red,
+                  borderRadius: BorderRadius.circular(1),
+                  gradient: const LinearGradient(colors: [
+                    Color.fromARGB(255, 198, 240, 245),
+                    Color.fromARGB(255, 70, 204, 253),
                   ]),
                   boxShadow: [
                     const BoxShadow(color: Colors.black, blurRadius: 10)
@@ -221,7 +240,7 @@ class _insthomeState extends State<insthome> {
                       Material(
                         borderRadius: BorderRadius.all(Radius.circular(60.0)),
                         child: CircleAvatar(
-                          backgroundImage: AssetImage("assets/m.png"),
+                          backgroundImage: AssetImage("assets/aa2.png"),
                           radius: 60,
                         ),
                         shadowColor: Colors.black,
@@ -236,8 +255,10 @@ class _insthomeState extends State<insthome> {
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(1),
-                    gradient: const LinearGradient(
-                        colors: [Colors.red, Colors.yellow])),
+                    gradient: const LinearGradient(colors: [
+                      Color.fromARGB(255, 198, 240, 245),
+                      Color.fromARGB(255, 70, 204, 253),
+                    ])),
                 child: ListTile(
                   leading: Icon(Icons.school_rounded),
                   title: Text(usermodel.Instname!),
@@ -248,8 +269,10 @@ class _insthomeState extends State<insthome> {
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(1),
-                    gradient: const LinearGradient(
-                        colors: [Colors.red, Colors.yellow])),
+                    gradient: const LinearGradient(colors: [
+                      Color.fromARGB(255, 198, 240, 245),
+                      Color.fromARGB(255, 70, 204, 253),
+                    ])),
                 child: ListTile(
                   leading: Icon(Icons.email),
                   title: Text(usermodel.email!),
@@ -265,15 +288,17 @@ class _insthomeState extends State<insthome> {
           ),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(1),
-              gradient:
-                  const LinearGradient(colors: [Colors.red, Colors.yellow])),
+              gradient: const LinearGradient(colors: [
+                Color.fromARGB(255, 0, 0, 0),
+                Color.fromARGB(255, 0, 0, 0)
+              ])),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/');
         },
-        backgroundColor: Color.fromARGB(255, 63, 5, 97),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
         child: const Icon(Icons.login_outlined),
       ),
     );

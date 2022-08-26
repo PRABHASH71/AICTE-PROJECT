@@ -31,7 +31,7 @@ class _personalState extends State<personal> {
           appBar: AppBar(
             centerTitle: true,
             toolbarHeight: 80,
-            backgroundColor: Color.fromARGB(255, 63, 5, 97),
+            backgroundColor: Color.fromARGB(255, 0, 0, 0),
             title: Text(
               "ABOUT",
               style: TextStyle(
@@ -69,8 +69,10 @@ class _personalState extends State<personal> {
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(1),
-                gradient:
-                    const LinearGradient(colors: [Colors.red, Colors.yellow])),
+                gradient: const LinearGradient(colors: [
+                  Color.fromARGB(255, 0, 0, 0),
+                  Color.fromARGB(255, 0, 0, 0)
+                ])),
           ),
         ),
       ),
@@ -85,7 +87,10 @@ class _personalState extends State<personal> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.red, Colors.yellow],
+                colors: [
+                  Color.fromARGB(255, 218, 161, 191),
+                  Color.fromARGB(255, 194, 90, 242)
+                ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -140,7 +145,10 @@ class _personalState extends State<personal> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.red, Colors.yellow],
+                colors: [
+                  Color.fromARGB(255, 218, 161, 191),
+                  Color.fromARGB(255, 194, 90, 242)
+                ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -168,7 +176,7 @@ class _personalState extends State<personal> {
                   fontSize: 18,
                 ),
                 softWrap: true,
-                maxLines: 6,
+                maxLines: 9,
                 overflow: TextOverflow.ellipsis,
               ),
               expanded: Text(
@@ -206,7 +214,10 @@ class _personalState extends State<personal> {
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.red, Colors.yellow],
+                    colors: [
+                      Color.fromARGB(255, 218, 161, 191),
+                      Color.fromARGB(255, 194, 90, 242)
+                    ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
@@ -265,7 +276,10 @@ class _personalState extends State<personal> {
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.red, Colors.yellow],
+                    colors: [
+                      Color.fromARGB(255, 218, 161, 191),
+                      Color.fromARGB(255, 194, 90, 242)
+                    ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),

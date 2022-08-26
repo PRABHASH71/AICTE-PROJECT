@@ -249,6 +249,7 @@ class _MeetingsState extends State<Meetings> {
             icon: Icon(Icons.info_outline),
           ),
         ],
+        backgroundColor: Colors.black,
       ),
       backgroundColor: Colors.black,
       body: Center(

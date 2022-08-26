@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:login/event.dart';
 import 'package:login/event_provider.dart';
 import 'package:login/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:rxdart/rxdart.dart';
 
 class EventEditingPage extends StatefulWidget {
   final Event? event;
@@ -55,6 +57,13 @@ class _EventEditingPageState extends State<EventEditingPage> {
                   height: 12,
                 ),
                 buildDateTimePicker(),
+                RawMaterialButton(
+                  child: Text("Sheduled Notification"),
+                  fillColor: Colors.blue,
+                  padding: EdgeInsets.all(15),
+                  elevation: 2.0,
+                  onPressed: () {},
+                ),
               ],
             ),
           ),
@@ -224,4 +233,32 @@ class _EventEditingPageState extends State<EventEditingPage> {
       Navigator.of(context).pop();
     }
   }
+}
+
+class NotificationApi {
+  static final _notifications = FlutterLocalNotificationsPlugin();
+  static final onNotifications = BehaviorSubject<String?>();
+  static Future _notificationDetails() async {
+    return NotificationDetails(
+      android: AndroidNotificationDetails(
+        'channel id',
+        'channel name',
+      ),
+    );
+  }
+
+  static Future showSheduleNotification({
+    int id = 0,
+    String? title,
+    String? body,
+    String? payload,
+    required DateTime scheduleDate,
+  }) async =>
+      _notifications.show(
+        id,
+        title,
+        body,
+        await _notificationDetails(),
+        payload: payload,
+      );
 }

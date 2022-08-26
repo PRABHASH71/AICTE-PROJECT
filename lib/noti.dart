@@ -20,7 +20,7 @@ class _notifiState extends State<notifi> {
           appBar: AppBar(
             centerTitle: true,
             toolbarHeight: 80,
-            backgroundColor: Color.fromARGB(255, 63, 5, 97),
+            backgroundColor: Color.fromARGB(255, 21, 20, 21),
             title: const Text(
               " EVENTS",
               style: TextStyle(
@@ -34,7 +34,7 @@ class _notifiState extends State<notifi> {
               Icons.add,
               color: Colors.white,
             ),
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: Color.fromARGB(255, 11, 4, 22),
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => EventEditingPage()),
             ),

@@ -11,11 +11,11 @@ class _firstState extends State<first> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 150, horizontal: 77),
+      padding: EdgeInsets.symmetric(vertical: 150, horizontal: 1),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Image.asset('assets/m.png'),
+          Image.asset('assets/aa.png'),
           SizedBox(
             height: 60,
           ),
@@ -23,7 +23,7 @@ class _firstState extends State<first> {
             style: TextButton.styleFrom(
                 shadowColor: Colors.red,
                 primary: Colors.white,
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: Color.fromARGB(255, 0, 0, 0),
                 textStyle: TextStyle(fontSize: 10),
                 elevation: 20,
                 padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
@@ -50,7 +50,7 @@ class _firstState extends State<first> {
             style: TextButton.styleFrom(
                 shadowColor: Colors.red,
                 primary: Colors.white,
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: Color.fromARGB(255, 0, 0, 0),
                 textStyle: TextStyle(fontSize: 10),
                 elevation: 30,
                 padding: EdgeInsets.all(10),

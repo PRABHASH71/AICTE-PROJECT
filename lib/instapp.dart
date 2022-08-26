@@ -47,7 +47,7 @@ class _instapproveState extends State<instapprove> {
             appBar: AppBar(
               centerTitle: true,
               toolbarHeight: 80,
-              backgroundColor: Color.fromARGB(255, 63, 5, 97),
+              backgroundColor: Color.fromARGB(255, 0, 0, 0),
               title: const Text(
                 "APPROVAL",
                 style: TextStyle(
@@ -97,12 +97,14 @@ class _instapproveState extends State<instapprove> {
                 ),
               ],
             ),
-            backgroundColor: Colors.amber,
+            backgroundColor: Colors.black,
           ),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(1),
-              gradient:
-                  const LinearGradient(colors: [Colors.red, Colors.yellow])),
+              gradient: const LinearGradient(colors: [
+                Color.fromARGB(255, 0, 0, 0),
+                Color.fromARGB(255, 0, 0, 0)
+              ])),
         ),
       ),
     );
@@ -116,7 +118,10 @@ class _instapproveState extends State<instapprove> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.red, Colors.yellow],
+                colors: [
+                  Color.fromARGB(255, 188, 234, 164),
+                  Color.fromARGB(255, 126, 221, 233),
+                ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -171,7 +176,10 @@ class _instapproveState extends State<instapprove> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.red, Colors.yellow],
+                colors: [
+                  Color.fromARGB(255, 188, 234, 164),
+                  Color.fromARGB(255, 126, 221, 233),
+                ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),

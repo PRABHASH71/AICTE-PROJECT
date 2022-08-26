@@ -31,11 +31,11 @@ class _approvalState extends State<approval> {
     return Center(
       child: Container(
         child: Scaffold(
-          backgroundColor: Colors.amber,
+          backgroundColor: Color.fromARGB(255, 243, 242, 240),
           appBar: AppBar(
             centerTitle: true,
             toolbarHeight: 80,
-            backgroundColor: Color.fromARGB(255, 63, 5, 97),
+            backgroundColor: Color.fromARGB(255, 11, 11, 11),
             title: const Text(
               " FELLOWSHIP",
               style: TextStyle(
@@ -60,8 +60,8 @@ class _approvalState extends State<approval> {
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                Color.fromARGB(255, 8, 119, 237),
-                                Color.fromARGB(255, 82, 249, 255)
+                                Color.fromARGB(255, 97, 167, 240),
+                                Color.fromARGB(255, 173, 140, 167)
                               ],
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,

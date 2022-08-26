@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/approval.dart';
+import 'package:login/approvaladmin.dart';
 import 'package:login/email.dart';
+import 'package:login/help.dart';
 import 'package:login/index.dart';
 
 import 'package:login/meet.dart';
@@ -27,13 +29,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
           appBar: AppBar(
             centerTitle: true,
             toolbarHeight: 80,
-            backgroundColor: Color.fromARGB(255, 63, 5, 97),
+            backgroundColor: Color.fromARGB(255, 0, 0, 0),
             title: const Text(
               " AICTE APP",
               style: TextStyle(
                 fontSize: 30,
               ),
             ),
+            elevation: 4.0,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => help()));
+                },
+                icon: Icon(Icons.lightbulb),
+              )
+            ],
           ),
           body: Container(
             child: GridView(
@@ -47,9 +59,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Container(
                     padding: EdgeInsets.all(90),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(255, 89, 95, 203),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
                     child: Column(
                       children: [
                         Image.asset("assets/org.png"),
@@ -68,13 +83,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 InkWell(
                   onTap: () {
                     Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => appadmin()));
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(90),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
+                    child: Column(
+                      children: [
+                        Image.asset("assets/app.png"),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Text(
+                          "APPROVAL",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
                         MaterialPageRoute(builder: (context) => IndexPage()));
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(255, 229, 10, 10),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
                     padding: EdgeInsets.all(90),
                     child: Column(
                       children: [
@@ -98,9 +145,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(255, 2, 141, 7),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
                     padding: EdgeInsets.all(90),
                     child: Column(
                       children: [
@@ -124,9 +174,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(255, 179, 8, 185),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
                     padding: EdgeInsets.all(90),
                     child: Column(
                       children: [
@@ -150,9 +203,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(255, 253, 164, 0),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 240, 245, 248),
+                          Color.fromARGB(255, 94, 218, 234),
+                          Color.fromARGB(255, 76, 126, 235)
+                        ])),
                     padding: EdgeInsets.all(90),
                     child: Column(
                       children: [
@@ -178,7 +234,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             onPressed: () {
               Navigator.pushNamed(context, '/');
             },
-            backgroundColor: Color.fromARGB(255, 63, 5, 97),
+            backgroundColor: Color.fromARGB(255, 0, 0, 0),
             child: const Icon(Icons.login_outlined),
           ),
           drawer: Drawer(
@@ -190,14 +246,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: <Widget>[
                   DrawerHeader(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: <Color>[
-                        Colors.orange,
-                        Colors.red,
-                      ]),
-                      boxShadow: [
-                        const BoxShadow(color: Colors.black, blurRadius: 10)
-                      ],
-                    ),
+                        borderRadius: BorderRadius.circular(1),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 198, 240, 245),
+                          Color.fromARGB(255, 70, 204, 253),
+                        ])),
                     child: Container(
                       child: Column(
                         children: [
@@ -205,10 +258,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(60.0)),
                             child: CircleAvatar(
-                              backgroundImage: AssetImage("assets/m.png"),
+                              backgroundImage: AssetImage("assets/aa2.png"),
                               radius: 60,
                             ),
-                            shadowColor: Colors.black,
+                            shadowColor: Color.fromARGB(255, 240, 237, 237),
                           ),
                         ],
                       ),
@@ -220,8 +273,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(1),
-                        gradient: const LinearGradient(
-                            colors: [Colors.red, Colors.yellow])),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 198, 240, 245),
+                          Color.fromARGB(255, 70, 204, 253),
+                        ])),
                     child: ListTile(
                       leading: Icon(Icons.email),
                       title: Text(user.email!),
@@ -237,15 +292,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(1),
-                  gradient: const LinearGradient(
-                      colors: [Colors.red, Colors.yellow])),
+                  gradient: const LinearGradient(colors: [
+                    Color.fromARGB(255, 18, 13, 13),
+                    Color.fromARGB(255, 8, 6, 6)
+                  ])),
             ),
           ),
         ),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(1),
-            gradient:
-                const LinearGradient(colors: [Colors.red, Colors.yellow])),
+            gradient: const LinearGradient(colors: [
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0)
+            ])),
       ),
     );
   }

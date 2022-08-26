@@ -101,7 +101,7 @@ class _BranchState extends State<Branch> {
         appBar: AppBar(
           centerTitle: true,
           toolbarHeight: 80,
-          backgroundColor: Color.fromARGB(255, 63, 5, 97),
+          backgroundColor: Color.fromARGB(255, 0, 0, 0),
           title: Text(
             "BRANCH",
             style: TextStyle(

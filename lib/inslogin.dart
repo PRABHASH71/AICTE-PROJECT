@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:login/forget.dart';
 import 'package:login/insthome.dart';
 
 class inslog extends StatefulWidget {
@@ -158,6 +159,16 @@ class _inslogState extends State<inslog> {
                               ),
                             )
                           ],
+                        ),
+                        MaterialButton(
+                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => forget()));
+                          },
+                          child: Text("Forgot Password"),
                         )
                       ],
                     ),
