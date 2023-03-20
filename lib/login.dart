@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login/first.dart';
 import 'package:login/noti.dart';
-import 'package:login/profile_screen.dart';
+import 'package:login/profile.dart';
+import 'package:login/admindashboard/profile_screen.dart';
 import 'package:login/sign.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -113,7 +115,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 120.0,
+                    height: 20.0,
+                  ),
+                  Container(
+                    height: 220,
+                    width: 550,
+                    child: Lottie.network(
+                        'https://assets8.lottiefiles.com/packages/lf20_jcikwtux.json'),
                   ),
                   Form(
                     key: _formkey,
@@ -205,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (user != null) {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => ProfileScreen()));
+                                  builder: (context) => profile()));
                         }
                       },
                       child: Text(
@@ -225,7 +233,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Institution not Registered? ",
+                        "Admin not Registered? ",
                         style: TextStyle(
                           fontSize: 15,
                         ),

@@ -53,11 +53,13 @@ dependencies:
   intl: ^0.17.0
   http: ^0.13.5
   url_launcher: ^6.0.3
+  lottie: ^1.2.1
   agora_rtc_engine: ^5.3.0
   im_stepper: ^1.0.1+1
   kommunicate_flutter: ^1.4.7
   flutter_local_notifications: ^9.8.0+1
   rxdart: ^0.27.5
+  carousel_slider: ^4.1.1
   
  
   

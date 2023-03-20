@@ -1,4 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:login/inslogin.dart';
+import 'package:login/instdashboard/insthome.dart';
+import 'package:login/login.dart';
+import 'package:login/scheme.dart';
 
 class first extends StatefulWidget {
   const first({Key? key}) : super(key: key);
@@ -10,80 +16,123 @@ class first extends StatefulWidget {
 class _firstState extends State<first> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 150, horizontal: 1),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Image.asset('assets/aa.png'),
-          SizedBox(
-            height: 60,
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-                shadowColor: Colors.red,
-                primary: Colors.white,
-                backgroundColor: Color.fromARGB(255, 0, 0, 0),
-                textStyle: TextStyle(fontSize: 10),
-                elevation: 20,
-                padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10))),
-            onPressed: () {
-              Navigator.pushNamed(context, 'home');
-            },
-            child: Text(
-              'AS ADMIN',
-              // ignore: prefer_const_constructors
-              style: TextStyle(
-                decoration: TextDecoration.none,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 253, 254, 255),
-              ),
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: 150, horizontal: 1),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset('assets/aa.png'),
+                SizedBox(
+                  height: 100,
+                ),
+                Container(
+                  child: Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                      },
+                      child: Container(
+                        height: 45,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 255, 136, 1),
+                                  Color.fromARGB(255, 253, 220, 3),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight),
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                spreadRadius: 1,
+                                blurRadius: 10,
+                              ),
+                              BoxShadow(
+                                color: Colors.black,
+                                spreadRadius: 1,
+                                blurRadius: 10,
+                              ),
+                            ]),
+                        child: Center(
+                          child: Text(
+                            "Admin",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  child: Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => inslog()));
+                      },
+                      child: Container(
+                        height: 45,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 255, 136, 1),
+                                  Color.fromARGB(255, 253, 220, 3),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight),
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                spreadRadius: 1,
+                                blurRadius: 10,
+                              ),
+                              BoxShadow(
+                                color: Colors.black,
+                                spreadRadius: 1,
+                                blurRadius: 10,
+                              ),
+                            ]),
+                        child: Center(
+                          child: Text(
+                            "Institution",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-                shadowColor: Colors.red,
-                primary: Colors.white,
-                backgroundColor: Color.fromARGB(255, 0, 0, 0),
-                textStyle: TextStyle(fontSize: 10),
-                elevation: 30,
-                padding: EdgeInsets.all(10),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0))),
-            onPressed: () {
-              Navigator.pushNamed(context, 'inslog');
-            },
-            child: Text(
-              'INSTITUTION',
-              // ignore: prefer_const_constructors
-              style: TextStyle(
-                decoration: TextDecoration.none,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 253, 254, 255),
-              ),
-            ),
-          ),
-        ],
-      ),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromARGB(255, 206, 35, 23),
-            Colors.orangeAccent,
-            Colors.white,
-            Colors.green,
-            Color.fromARGB(255, 9, 93, 12),
-          ],
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
         ),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage('assets/my.png'),
+          fit: BoxFit.fill,
+        )),
       ),
     );
   }

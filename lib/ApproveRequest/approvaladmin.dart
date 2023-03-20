@@ -1,44 +1,31 @@
-import 'dart:io';
+// ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:login/FetchApproval/approvebranch.dart';
 
-import 'package:login/ApproveRequest/branchnew.dart';
+import 'package:login/FetchApproval/approvecollege.dart';
 import 'package:login/ApproveRequest/collegeapproval.dart';
+import 'package:login/get_details.dart';
+import 'package:login/tracker.dart';
+import 'package:snapshot/snapshot.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import 'package:login/imageupload.dart';
-import 'package:login/usermodel.dart';
-
-class instapprove extends StatefulWidget {
-  const instapprove({Key? key}) : super(key: key);
+class appadmin extends StatefulWidget {
+  const appadmin({Key? key}) : super(key: key);
 
   @override
-  State<instapprove> createState() => _instapproveState();
+  State<appadmin> createState() => _appadminState();
 }
 
-class _instapproveState extends State<instapprove> {
-  static final data1 = 'Steps for giving response for new Branch Approval.';
+class _appadminState extends State<appadmin> {
+  static final data1 = 'LINK TO THE REQUESTS FOR BRANCH APPROVALS IS BELOW ';
 
-  static final data2 = 'Steps for giving response for new college Approval';
-  User? user = FirebaseAuth.instance.currentUser;
-  Usermodel usermodel = Usermodel();
-  void initState() {
-    super.initState();
-    FirebaseFirestore.instance
-        .collection("users")
-        .doc(user!.uid)
-        .get()
-        .then((value) {
-      this.usermodel = Usermodel.fromMap(value.data());
-      setState(() {});
-    });
-  }
+  static final data2 = 'LINK TO THE REQUESTS FOR COLLEGE APPROVALS IS BELOW';
 
   @override
   Widget build(BuildContext context) {
@@ -76,11 +63,11 @@ class _instapproveState extends State<instapprove> {
                     height: 10,
                   ),
                   buildCard(
-                    'ADD NEW BRANCH',
+                    'BRANCH APPROVAL',
                   ),
                   SizedBox(height: 10),
                   Container(
-                    padding: EdgeInsets.only(left: 90, right: 90),
+                    padding: EdgeInsets.only(left: 50, right: 50),
                     child: RawMaterialButton(
                       fillColor: Colors.green,
                       padding: EdgeInsets.all(10),
@@ -90,10 +77,10 @@ class _instapproveState extends State<instapprove> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => newbranch()));
+                                builder: (context) => approvebranch()));
                       },
                       child: Text(
-                        "ADD BRANCH",
+                        "BRANCH APPROVALS",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -102,22 +89,24 @@ class _instapproveState extends State<instapprove> {
                     ),
                   ),
                   buildCard1(
-                    'ADD NEW COLLEGE',
+                    'NEW COLLEGE APPROVALS',
                   ),
                   SizedBox(height: 10),
                   Container(
-                    padding: EdgeInsets.only(left: 90, right: 90),
+                    padding: EdgeInsets.only(left: 50, right: 50),
                     child: RawMaterialButton(
                       fillColor: Colors.green,
                       padding: EdgeInsets.all(10),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => college()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Collegeapp()));
                       },
                       child: Text(
-                        "ADD COLLEGE",
+                        "COLLEGE APPROVAL",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

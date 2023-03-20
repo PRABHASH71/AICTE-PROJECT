@@ -19,7 +19,7 @@ class _approvalState extends State<approval> {
 
   Future getDocId() async {
     await FirebaseFirestore.instance.collection('users').get().then(
-          (snapshot) => snapshot.docs.forEach((document) {
+          (value) => value.docs.forEach((document) {
             print(document.reference);
             docIDs.add(document.reference.id);
           }),
@@ -55,22 +55,10 @@ class _approvalState extends State<approval> {
                     itemCount: docIDs.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Color.fromARGB(255, 97, 167, 240),
-                                Color.fromARGB(255, 173, 140, 167)
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                            ),
-                          ),
-                          child: ListTile(
-                            title: GetUserName(
-                                documentId: docIDs[index], doc: docIDs[index]),
-                          ),
+                        padding: EdgeInsets.all(1.0),
+                        child: ListTile(
+                          title: GetUserName(
+                              documentId: docIDs[index], doc: docIDs[index]),
                         ),
                       );
                     },

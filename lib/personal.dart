@@ -1,7 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login/approval.dart';
+import 'package:login/Fellowship.dart';
 
 class personal extends StatefulWidget {
   const personal({Key? key}) : super(key: key);
@@ -30,8 +30,13 @@ class _personalState extends State<personal> {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            toolbarHeight: 80,
-            backgroundColor: Color.fromARGB(255, 0, 0, 0),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.blue, Color.fromARGB(255, 3, 54, 96)],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter)),
+            ),
             title: Text(
               "ABOUT",
               style: TextStyle(
@@ -70,8 +75,8 @@ class _personalState extends State<personal> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(1),
                 gradient: const LinearGradient(colors: [
-                  Color.fromARGB(255, 0, 0, 0),
-                  Color.fromARGB(255, 0, 0, 0)
+                  Color.fromARGB(255, 145, 226, 255),
+                  Color.fromARGB(255, 145, 226, 255),
                 ])),
           ),
         ),
@@ -88,8 +93,8 @@ class _personalState extends State<personal> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 218, 161, 191),
-                  Color.fromARGB(255, 194, 90, 242)
+                  Color.fromARGB(255, 117, 182, 255),
+                  Color.fromARGB(255, 255, 245, 250),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -146,8 +151,8 @@ class _personalState extends State<personal> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 218, 161, 191),
-                  Color.fromARGB(255, 194, 90, 242)
+                  Color.fromARGB(255, 117, 182, 255),
+                  Color.fromARGB(255, 255, 245, 250),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -215,8 +220,8 @@ class _personalState extends State<personal> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color.fromARGB(255, 218, 161, 191),
-                      Color.fromARGB(255, 194, 90, 242)
+                      Color.fromARGB(255, 117, 182, 255),
+                      Color.fromARGB(255, 255, 245, 250),
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -277,8 +282,8 @@ class _personalState extends State<personal> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color.fromARGB(255, 218, 161, 191),
-                      Color.fromARGB(255, 194, 90, 242)
+                      Color.fromARGB(255, 117, 182, 255),
+                      Color.fromARGB(255, 255, 245, 250),
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,

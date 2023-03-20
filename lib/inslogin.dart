@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login/forget.dart';
-import 'package:login/insthome.dart';
+import 'package:login/instdashboard/insthome.dart';
 
 class inslog extends StatefulWidget {
   const inslog({Key? key}) : super(key: key);

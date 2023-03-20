@@ -4,7 +4,7 @@
     package="com.example.login">
    <application
         tools:replace="android:label"
-        android:label="login"
+        android:label="AICTE APP"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
