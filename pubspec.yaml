@@ -51,6 +51,7 @@ dependencies:
   expandable: ^5.0.1
   syncfusion_flutter_calendar: ^20.2.43
   intl: ^0.17.0
+  file: ^6.1.4
   http: ^0.13.5
   url_launcher: ^6.0.3
   lottie: ^1.2.1

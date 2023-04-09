@@ -114,8 +114,8 @@ class _emailState extends State<email> {
   }
 
   Future SendEmail() async {
-    const serviceId = 'service_1r8hmgc';
-    const templateId = 'template_msm99gg';
+    const serviceId = 'service_hhllm4w';
+    const templateId = 'template_cetjwcf';
     const userId = '_Pfmg0CjH8HNbemws';
     final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
 

@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:ffi';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
@@ -21,28 +23,24 @@ class Meetings extends StatefulWidget {
 }
 
 class _MeetingsState extends State<Meetings> {
-  final _users = <int>[];
-  final _infoStrings = <String>[];
-  bool mute = false;
-  bool viewPanel = false;
-  late RtcEngine _engine;
-
-  @override
+  bool _loading = true;
+  String tempToken = "";
   void initState() {
-    // TODO: implement initState
+    getToken();
     super.initState();
-    initialize();
   }
 
-  @override
-  void dispose() {
-    _users.clear();
-    _engine.leaveChannel();
-    _engine.destroy();
-    super.dispose();
-  }
+  Future<void> getToken() async {
+    String link =
+        "https://agora-node-tokenserver.prabhashranjan1.repl.co/access_token?channelName=test";
 
-  Future<void> initialize() async {
+    Response _response = await get(Uri.parse(link));
+
+    Map data = jsonDecode(_response.body);
+    setState(() {
+      tempToken = data["token"];
+      print(data["token"]);
+    });
     if (appId.isEmpty) {
       setState(() {
         _infoStrings.add('APP_ID missing, please provide your APP_ID');
@@ -58,7 +56,23 @@ class _MeetingsState extends State<Meetings> {
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
     configuration.dimensions = VideoDimensions(width: 1920, height: 1080);
     await _engine.setVideoEncoderConfiguration(configuration);
-    await _engine.joinChannel(token, widget.channelName!, null, 0);
+    await _engine.joinChannel(tempToken, widget.channelName!, null, 0);
+    Future.delayed(Duration(seconds: 1))
+        .then((value) => setState(() => _loading = false));
+  }
+
+  final _users = <int>[];
+  final _infoStrings = <String>[];
+  bool mute = false;
+  bool viewPanel = false;
+  late RtcEngine _engine;
+
+  @override
+  void dispose() {
+    _users.clear();
+    _engine.leaveChannel();
+    _engine.destroy();
+    super.dispose();
   }
 
   void _addAgoraEventHandler() {
@@ -253,13 +267,17 @@ class _MeetingsState extends State<Meetings> {
       ),
       backgroundColor: Colors.black,
       body: Center(
-        child: Stack(
-          children: <Widget>[
-            _viewRows(),
-            _panel(),
-            _toolbar(),
-          ],
-        ),
+        child: _loading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Stack(
+                children: <Widget>[
+                  _viewRows(),
+                  _panel(),
+                  _toolbar(),
+                ],
+              ),
       ),
     );
   }
