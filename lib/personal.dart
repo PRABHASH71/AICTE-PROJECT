@@ -209,10 +209,11 @@ class _personalState extends State<personal> {
             children: [
               Stack(
                 children: [
-                  Ink.image(
-                    image: AssetImage('assets/jk.png'),
+                  Image(
+                    image: AssetImage("assets/jk.png"),
                     height: 240,
-                    fit: BoxFit.cover,
+                    width: 400,
+                    fit: BoxFit.fitWidth,
                   ),
                 ],
               ),

@@ -57,13 +57,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
                   height: 12,
                 ),
                 buildDateTimePicker(),
-                RawMaterialButton(
-                  child: Text("Sheduled Notification"),
-                  fillColor: Colors.blue,
-                  padding: EdgeInsets.all(15),
-                  elevation: 2.0,
-                  onPressed: () {},
-                ),
               ],
             ),
           ),
