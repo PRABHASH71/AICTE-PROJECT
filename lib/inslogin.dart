@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login/forget.dart';
 import 'package:login/instdashboard/insthome.dart';
+import 'package:lottie/lottie.dart';
 
 class inslog extends StatefulWidget {
   const inslog({Key? key}) : super(key: key);
@@ -24,6 +25,7 @@ class _inslogState extends State<inslog> {
       autofocus: false,
       controller: emailController,
       keyboardType: TextInputType.emailAddress,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
         if (value!.isEmpty) {
           return ("Please Enter Your Email");
@@ -50,6 +52,7 @@ class _inslogState extends State<inslog> {
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
         RegExp regex = new RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
@@ -115,72 +118,74 @@ class _inslogState extends State<inslog> {
             child: SingleChildScrollView(
               child: Container(
                 child: Padding(
-                  padding: const EdgeInsets.all(36.0),
-                  child: Form(
-                    key: _formkey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          height: 200,
-                          child: Text(
-                            "LOGIN ",
-                            style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                            ),
-                          ),
+                  padding: EdgeInsets.fromLTRB(36, 5, 36, 36),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "LOGIN ",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35.0,
+                          fontWeight: FontWeight.bold,
                         ),
-                        emailField,
-                        SizedBox(
-                          height: 20,
-                        ),
-                        passwordField,
-                        SizedBox(
-                          height: 20,
-                        ),
-                        loginButton,
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      Container(
+                        height: 220,
+                        width: 550,
+                        child: Lottie.network(
+                            'https://assets8.lottiefiles.com/packages/lf20_jcikwtux.json'),
+                      ),
+                      Form(
+                        key: _formkey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(
-                              "Institution not Registered? ",
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
+                            emailField,
+                            SizedBox(
+                              height: 20,
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(context, 'insreg');
-                              },
-                              child: Text(
-                                "Sign Up",
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                            passwordField,
+                            SizedBox(
+                              height: 20,
+                            ),
+                            loginButton,
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  "Institution not Registered? ",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                  ),
                                 ),
-                              ),
-                            )
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(context, 'insreg');
+                                  },
+                                  child: Text(
+                                    "Sign Up",
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ],
                         ),
-                        MaterialButton(
-                          padding: EdgeInsets.symmetric(horizontal: 30),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => forget()));
-                          },
-                          child: Text("Forgot Password"),
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),

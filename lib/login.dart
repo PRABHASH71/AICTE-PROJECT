@@ -19,261 +19,211 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Future<FirebaseApp> _initializeFirebase() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
-    return firebaseApp;
-  }
+  bool _obsecuretext = true;
+  final _formkey = GlobalKey<FormState>();
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
 
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-        future: _initializeFirebase(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return LoginScreen();
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+    final emailField = TextFormField(
+      autofocus: false,
+      controller: emailController,
+      keyboardType: TextInputType.emailAddress,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Please Enter Your Email");
+        }
+
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+          return ("Please Enter a Valid Email");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        emailController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        prefixIcon: Icon(Icons.mail),
+        contentPadding: EdgeInsets.fromLTRB(20, 15, 15, 20),
+        fillColor: Colors.white30,
+        hintText: "Email",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color.fromARGB(255, 54, 53, 53)),
+        ),
+        filled: true,
       ),
     );
-  }
-}
+    final passwordField = TextFormField(
+      autofocus: false,
+      controller: passwordController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Please Enter your Password");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Please Enter Valid Password Min. of 6 charater ");
+        }
+      },
+      onSaved: (value) {
+        emailController.text = value!;
+      },
+      textInputAction: TextInputAction.done,
+      decoration: InputDecoration(
+        suffixIcon: GestureDetector(
+          onTap: () {
+            setState(() {
+              _obsecuretext = !_obsecuretext;
+            });
+          },
+          child: Icon(_obsecuretext ? Icons.visibility : Icons.visibility_off),
+        ),
+        prefixIcon: Icon(Icons.vpn_key),
+        contentPadding: EdgeInsets.fromLTRB(20, 15, 15, 20),
+        fillColor: Colors.white30,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color.fromARGB(255, 54, 53, 53)),
+        ),
+        filled: true,
+        hintText: "Password",
+      ),
+      obscureText: _obsecuretext,
+    );
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+    final loginButton = Material(
+      elevation: 10,
+      borderRadius: BorderRadius.circular(30),
+      color: Colors.purple,
+      child: MaterialButton(
+        padding: EdgeInsets.fromLTRB(20, 15, 15, 20),
+        minWidth: MediaQuery.of(context).size.width,
+        onPressed: () {
+          signIn(emailController.text, passwordController.text);
+        },
+        child: Text(
+          "LOGIN",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  bool _obsecuretext = true;
-  static Future<User?> loginUsingEmailPassword(
-      {required String email,
-      required String password,
-      required BuildContext context}) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    User? user;
-    try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      user = userCredential.user;
-    } on FirebaseAuthException catch (e) {
-      Fluttertoast.showToast(msg: "INVALID EMAIL OR PASSWORD");
-    }
-    return user;
-  }
-
-  String? validatepass(value) {
-    if (value.isEmpty) {
-      return "Required";
-    } else {
-      return null;
-    }
-  }
-
-  String? validate(value) {
-    if (value.isEmpty) {
-      return "Required";
-    } else {
-      return null;
-    }
-  }
-
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  checkvalidation(GlobalKey<FormState> _formkey) {
-    if (_formkey.currentState!.validate()) {
-      print('VALIDATED');
-    } else {
-      print('NOT VALIDATED');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passwordController = TextEditingController();
     return Container(
-      child: Container(
-        child: Padding(
-          padding: EdgeInsets.only(top: 1, left: 30, right: 30, bottom: 40),
+      child: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+            image: AssetImage('assets/l.png'),
+            fit: BoxFit.cover,
+          )),
           child: Center(
             child: SingleChildScrollView(
-              reverse: true,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "LOGIN ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 35.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Container(
-                    height: 220,
-                    width: 550,
-                    child: Lottie.network(
-                        'https://assets8.lottiefiles.com/packages/lf20_jcikwtux.json'),
-                  ),
-                  Form(
-                    key: _formkey,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    child: TextFormField(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: MultiValidator([
-                        RequiredValidator(errorText: "Required"),
-                        EmailValidator(errorText: "Not a valid email"),
-                      ]),
-                      controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        fillColor: Colors.white10,
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 61, 61, 61)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue),
-                        ),
-                        filled: true,
-                        hintText: "Admin email",
-                        prefixIcon: Icon(
-                          Icons.person_sharp,
-                          color: Color.fromARGB(255, 145, 138, 138),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 26.0,
-                  ),
-                  Form(
-                    child: TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _obsecuretext = !_obsecuretext;
-                            });
-                          },
-                          child: Icon(_obsecuretext
-                              ? Icons.visibility
-                              : Icons.visibility_off),
-                        ),
-                        fillColor: Colors.white30,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 54, 53, 53)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue),
-                        ),
-                        filled: true,
-                        hintText: "Password",
-                        prefixIcon: Icon(
-                          Icons.key,
-                          color: Color.fromARGB(255, 145, 138, 138),
-                        ),
-                      ),
-                      obscureText: _obsecuretext,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: (value) {
-                        RegExp regex = new RegExp(r'^.{6,}$');
-                        if (value!.isEmpty) {
-                          return ("Please Enter your Password");
-                        }
-                        if (!regex.hasMatch(value)) {
-                          return ("Please Enter Valid Password Min. of 6 charater ");
-                        }
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: RawMaterialButton(
-                      fillColor: Colors.deepPurple,
-                      elevation: 10,
-                      padding: EdgeInsets.symmetric(vertical: 16.0),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(36.0)),
-                      onPressed: () async {
-                        checkvalidation(_formkey);
-                        User? user = await loginUsingEmailPassword(
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                            context: context);
-                        print(user);
-                        if (user != null) {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => profile()));
-                        }
-                      },
-                      child: Text(
-                        "Login",
+              child: Container(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(36, 15, 36, 36),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "LOGIN ",
                         style: TextStyle(
-                          fontSize: 25.0,
                           color: Colors.white,
+                          fontSize: 35.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Admin not Registered? ",
-                        style: TextStyle(
-                          fontSize: 15,
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      Container(
+                        height: 220,
+                        width: 550,
+                        child: Lottie.network(
+                            'https://assets8.lottiefiles.com/packages/lf20_jcikwtux.json'),
+                      ),
+                      Form(
+                        key: _formkey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            emailField,
+                            SizedBox(
+                              height: 20,
+                            ),
+                            passwordField,
+                            SizedBox(
+                              height: 20,
+                            ),
+                            loginButton,
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  "Admin not Registered? ",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(context, 'sign');
+                                  },
+                                  child: Text(
+                                    "Sign Up",
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, 'sign');
-                        },
-                        child: Text(
-                          "Sign Up",
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      )
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
             ),
           ),
         ),
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage('assets/l.png'),
-          fit: BoxFit.cover,
-        )),
       ),
     );
+  }
+
+  void signIn(String email, String password) async {
+    if (_formkey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((uid) => {
+                Fluttertoast.showToast(msg: "Login Successfull"),
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => profile())),
+              })
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
   }
 }
