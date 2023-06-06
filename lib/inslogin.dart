@@ -12,6 +12,7 @@ class inslog extends StatefulWidget {
 }
 
 class _inslogState extends State<inslog> {
+  bool _obsecuretext = true;
   final _formkey = GlobalKey<FormState>();
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
@@ -49,7 +50,6 @@ class _inslogState extends State<inslog> {
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordController,
-      obscureText: true,
       validator: (value) {
         RegExp regex = new RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
@@ -64,6 +64,14 @@ class _inslogState extends State<inslog> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
+        suffixIcon: GestureDetector(
+          onTap: () {
+            setState(() {
+              _obsecuretext = !_obsecuretext;
+            });
+          },
+          child: Icon(_obsecuretext ? Icons.visibility : Icons.visibility_off),
+        ),
         prefixIcon: Icon(Icons.vpn_key),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 15, 20),
         hintText: "Password",
@@ -71,6 +79,7 @@ class _inslogState extends State<inslog> {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
+      obscureText: _obsecuretext,
     );
 
     final loginButton = Material(

@@ -54,7 +54,7 @@ class _MeetingsState extends State<Meetings> {
     await _engine.setClientRole(widget.role!);
     _addAgoraEventHandler();
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
-    configuration.dimensions = VideoDimensions(width: 1920, height: 1080);
+    configuration.dimensions = VideoDimensions(width: 1920, height: 1920);
     await _engine.setVideoEncoderConfiguration(configuration);
     await _engine.joinChannel(tempToken, widget.channelName!, null, 0);
     Future.delayed(Duration(seconds: 1))

@@ -1,0 +1,366 @@
+let image1 = "https://aicte-india.org/sites/all/themes/educational/js/chat-bot/images/slide1.png";
+let image2 = "https://aicte-india.org/sites/all/themes/educational/js/chat-bot/images/slide2.png";
+let image3 = "https://aicte-india.org/sites/all/themes/educational/js/chat-bot/images/slide3.png";
+let image4 = "https://aicte-india.org/sites/all/themes/educational/js/chat-bot/images/slide4.png";
+let image5 = "https://aicte-india.org/sites/all/themes/educational/js/chat-bot/images/slide5.png";
+let image6 = "https://aicte-india.org/sites/all/themes/educational/js/chat-bot/images/slide6.png";
+let image7 = "https://aicte-india.org/sites/all/themes/educational/js/chat-bot/images/slide7.png";
+let imageTooltip1 = "AICTE Website"
+let imageTooltip2 = "Approval Process"
+let imageTooltip3 = "PMSSS"
+let imageTooltip4 = "Pragati & Saksham"
+let imageTooltip5 = "ADF"
+let imageTooltip6 = "ATAL"
+let imageTooltip7 = "AQIS"
+let imageUrl1 = "https://aicte-india.org/";
+let imageUrl2 = "https://portal.aicte-india.org/partnerportal_enu/";
+let imageUrl3 = "https://aicte-jk-scholarship-gov.in/";
+let imageUrl4 = "https://www.aicte-pragati-saksham-gov.in/";
+let imageUrl5 = "https://fellowship.aicte-india.org/";
+let imageUrl6 = "https://atalacademy.aicte-india.org/";
+let imageUrl7 = "https://portal.aicte-india.org/partnerportal_enu/";
+function initialize() {
+
+    var el = document.getElementById("top-text");
+
+    el.innerHTML = el.innerHTML + `<div id="test1"> 
+    <p>DISCLAIMER: All these replies are from bot If you have any queries, Please raise a ticket through the link: 
+	<a href="https://css.aicte-india.org/" target="_blank" rel="noreferrer noopener">https://css.aicte-india.org/</a></p></div>
+	
+    <div id='chat-bot-slider'> <div class='chat-bot-slideshow-container'><div class='chat-bot-mySlides fade'>
+	<div class='chat-bot-numbertext'></div> <a class='chat-bot-tooltip' href='javascript:window.parent.imgurl(1)' ;><img class='slideImg' src='${image1}'>
+	<span class='chat-bot-tooltiptext'>${imageTooltip1}</span></a> <div class='chat-bot-text'></div> </div> <div class='chat-bot-mySlides fade'> 
+	<div class='chat-bot-numbertext'></div> <a class='chat-bot-tooltip' href='javascript:window.parent.imgurl(2)' ;><img class='slideImg' src='${image2}'>
+	<span class='chat-bot-tooltiptext'>${imageTooltip2}</span></a> <div class='chat-bot-text'></div> </div> <div class='chat-bot-mySlides fade'> 
+    <div class='chat-bot-numbertext'></div> <a class='chat-bot-tooltip' href='javascript:window.parent.imgurl(3)' ;><img class='slideImg' src='${image3}'>
+	<span class='chat-bot-tooltiptext'>${imageTooltip3}</span></a> <div class='chat-bot-text'></div> </div> <div class='chat-bot-mySlides fade'>
+    <div class='chat-bot-numbertext'></div> <a class='chat-bot-tooltip' href='javascript:window.parent.imgurl(4)' ;><img class='slideImg' src='${image4}'>
+	<span class='chat-bot-tooltiptext'>${imageTooltip4}</span></a> <div class='chat-bot-text'></div> </div> <div class='chat-bot-mySlides fade'>
+    <div class='chat-bot-numbertext'></div> <a class='chat-bot-tooltip' href='javascript:window.parent.imgurl(5)' ;><img class='slideImg' src='${image5}'>
+	<span class='chat-bot-tooltiptext'>${imageTooltip5}</span></a> <div class='chat-bot-text'></div> </div> <div class='chat-bot-mySlides fade'>
+    <div class='chat-bot-numbertext'></div> <a class='chat-bot-tooltip' href='javascript:window.parent.imgurl(6)' ;><img class='slideImg' src='${image6}'>
+	<span class='chat-bot-tooltiptext'>${imageTooltip6}</span></a> <div class='chat-bot-text'></div> </div> <div class='chat-bot-mySlides fade'>
+    <div class='chat-bot-numbertext'></div> <a class='chat-bot-tooltip' href='javascript:window.parent.imgurl(7)' ;><img class='slideImg' src='${image7}'>
+    <span class='chat-bot-tooltiptext'>${imageTooltip7}</span></a> <div class='chat-bot-text'></div> <div class='chat-bot-text'></div> </div>
+	</div><div style='text-align:center'></div><div style='text-align:center'> 
+    <span class='chat-bot-dot' onclick='currentSlideClick(1)'></span>
+    <span class='chat-bot-dot' onclick='currentSlideClick(2)'></span>
+    <span class='chat-bot-dot' onclick='currentSlideClick(3)'></span>
+    <span class='chat-bot-dot' onclick='currentSlideClick(4)'></span> 
+    <span class='chat-bot-dot' onclick='currentSlideClick(5)'></span> 
+    <span class='chat-bot-dot' onclick='currentSlideClick(6)'></span>
+    <span class='chat-bot-dot' onclick='currentSlideClick(7)'></span></div></div>` ;
+    
+
+  //  el.innerHTML = el.innerHTML + "<p id='chat-bot-textintro'>I can help you with following categories</p>";
+
+    //el.innerHTML = el.innerHTML + "<div id='chat-bot-mainmenu'> <left><p id='chat-bot-spara'></p><span class='chat-bot-action-elem'><span style='position:relative;' onclick='approvalProcess();'>Approval Process</span></span> <span class='chat-bot-action-elem'><span style='position:relative;' onclick='margdarshan();'>Margdarshan</span></span> <span class='chat-bot-action-elem'><span style='position:relative;' onclick='scholarship();'>Scholarship</span></span><br></div>";
+    
+
+    var el = document.getElementById("header-custom-element");
+
+    el.innerHTML = el.innerHTML + "<div id='chat-bot-prompt' style='display:none;color:black;'>Do you wish to end the conversation?<br><br> <a id='chat-bot-Ybut' class='chat-bot-confirmbutton' href='javascript:window.parent.CloseYes();'>Yes</a> <a id='chat-bot-Nbut' class='chat-bot-confirmbutton' href='javascript:window.parent.CloseNo();'>No</a></div>";
+    
+}
+function imgurl(n) {
+    if (n == 1)
+        window.open(imageUrl1);
+    else if (n == 2)
+        window.open(imageUrl2);
+    else if (n == 3)
+        window.open(imageUrl3);
+    else if (n == 4)
+        window.open(imageUrl4);
+    else if (n == 5)
+        window.open(imageUrl5);
+    else if (n == 6)
+        window.open(imageUrl6);
+    else if (n == 7)
+        window.open(imageUrl7);
+}
+
+
+var slideIndex = 0;
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+
+function currentSlide(n) {
+
+    showSlides(slideIndex = n);
+
+
+}
+function currentSlideClick(n) {
+    showCurrentSlide(slideIndex = n);
+
+}
+
+function showSlides(n) {
+    
+    var i;
+    var slides = document.getElementsByClassName("chat-bot-mySlides");
+    var dots = document.getElementsByClassName("chat-bot-dot");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    setTimeout(showSlides, 5000); // Change image every 2 seconds
+}
+function showCurrentSlide(n) {
+    var i;
+    var slides = document.getElementsByClassName("chat-bot-mySlides");
+    var dots = document.getElementsByClassName("chat-bot-dot");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    //slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    //setTimeout(showSlides, 5000); // Change image every 2 seconds
+}
+
+//Function to toggle full pargraph showing
+function showHideParagraphs(lidx) {
+    var dots = document.getElementById("dots" + lidx);
+    var moreText = document.getElementById("more" + lidx);
+    var btnText = document.getElementById("myBtn" + lidx);
+    btnText.blur(); //loose focus
+
+    if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
+    } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
+    }
+}
+
+// INT.Q.8 : Optimize longer bot messages displayed in the Oracle Web Messenger
+// Function to split paragraphs with show more:
+var gidx = 0;
+function splitParagraph(txt) {
+    var paragraphs = txt.split("\\n\\n");
+    if (paragraphs.length > 1) {
+        var html = "<p>" + paragraphs[0] + '<span id="dots' + gidx + '">...</span></p><span id="more' + gidx + '" class="more">';
+        for (var idx = 1; idx < paragraphs.length; idx++) {
+            html += "<p>" + paragraphs[idx] + "</p>";
+        }
+        html += '</span><button class="readMore" onclick="showHideParagraphs(' + gidx + ')" id="myBtn' + gidx + '">Read more</button>';
+        gidx++;
+        return html;
+    }
+    else {
+        return txt;
+    }
+}
+
+// INT.Q.8 : Optimize longer bot messages displayed in the Oracle Web Messenger
+function setupDelegate(Bots) {
+    // Define a delegate for the Web SDK
+    Bots.setDelegate({
+        beforeDisplay(message) {
+            if (message.messagePayload.type == 'text') {
+                //Split paragrahps with show-more
+                message.messagePayload.text = splitParagraph(message.messagePayload.text);
+            }
+            return message;
+        }
+    })
+
+}
+// close conversation//
+function Close() {
+    document.getElementById("chat-bot-prompt").style.display = "grid";
+    document.getElementById("chat_widget_main").style.opacity = "0.2";
+    //document.getElementById("chat-bot-mainmenu").style.opacity = "0.2";
+    //document.getElementById("chat-bot-textintro").style.opacity = "0.2";
+    document.getElementById("chat_widget_main").style.pointerEvents = "none";
+    //document.getElementById("chat-bot-mainmenu").style.pointerEvents = "none";
+   // document.getElementById("chat-bot-textintro").style.pointerEvents = "none";
+}
+function CloseNo() {
+
+    document.getElementById("chat-bot-prompt").style.display = "none";
+    document.getElementById("chat_widget_main").style.opacity = "1";
+    //document.getElementById("chat-bot-mainmenu").style.opacity = "1";
+    //document.getElementById("chat-bot-textintro").style.opacity = "1";
+    document.getElementById("chat_widget_main").style.pointerEvents = "all";
+    //document.getElementById("chat-bot-mainmenu").style.pointerEvents = "all";
+    //document.getElementById("chat-bot-textintro").style.pointerEvents = "all";
+}
+function CloseYes() {
+    sessionStorage.clear();
+    Bots.closeChat();
+    Bots.disconnect();
+    Bots.destroy();
+    var he = document.createElement("DIV");
+    he.setAttribute("id", "header-custom-element");
+    he.setAttribute("style", "padding: 0; text-align: initial");
+    document.body.appendChild(he);
+    var el = document.createElement("DIV");
+    el.setAttribute("id", "top-text");
+    el.setAttribute("style", "padding: 0; text-align: initial");
+    document.body.appendChild(el);
+    initSdk("Bots");
+    initialize();
+    //currentSlide(1);
+}
+
+
+function SendMsg(msg) {
+    //Bots.sendMessage(msg, { hidden: true });
+    Bots.sendMessage(msg, { hidden: false });
+}
+
+function approvalProcess() {
+    //console.log("Approval Process");
+    SendMsg('I need Approval Process FAQs');
+}
+function margdarshan() {
+    //console.log("Margdarshan");
+    SendMsg('I need Margdarshan FAQs');
+}
+function scholarship() {
+    //console.log("Scholarship");
+    SendMsg('I need Scholarship FAQs');
+}
+
+function showFacultyform() {
+    var faculty = document.querySelectorAll("[id=\"faculty\"]");
+    Bots.sendMessage({
+        "messagePayload": {
+            "postback": {
+                "variables": {
+                    "faculty": faculty[faculty.length - 1].value
+                },
+                "action": "submitRequest",
+                "system.state": "openFacultyForm"
+            },
+            "text": "Login", "type": "postback"
+        }
+    }, { hidden: true });   
+    var faculty = document.getElementById("faculty"); faculty.disabled = true;  
+}
+
+function showInstituteform() {
+    var institute = document.querySelectorAll("[id=\"institute\"]");
+    sessionStorage.setItem('Institute', institute[institute.length - 1].value)
+    Bots.sendMessage({
+        "messagePayload": {
+            "postback": {
+                "variables": {
+                    "institute": institute[institute.length - 1].value
+                },
+                "action": "submitRequest",
+                "system.state": "openInstituteForm"
+            },
+            "text": "Login", "type": "postback"
+        }
+    }, { hidden: true });   
+    var institute = document.getElementById("institute"); institute.disabled = true;  
+}
+function showDeficiencyButton(){
+    var institute = document.querySelectorAll("[id=\"institute\"]");
+        
+    Bots.sendMessage({
+        "messagePayload": {
+            "postback": {
+                "variables": {
+                    
+                    "institute": sessionStorage.getItem('Institute'),
+                },
+                
+                "action": "submitRequest",
+                "system.state": "OpenDeficiencySubLoginForm"
+            },
+            "text": "institute", "type": "postback"
+        }
+    }, { hidden: true });
+    var institute = document.getElementById("institute"); institute.disabled = true;
+}
+function showADFLoginForm() {
+    var studentsID = document.querySelectorAll("[id=\"studentsID\"]");
+    Bots.sendMessage({
+        "messagePayload": {
+            "postback": {
+                "variables": {
+                    "studentsID": studentsID[studentsID.length - 1].value
+                },
+                "action": "submitRequest",
+                "system.state": "openADFLoginForm"
+            },
+            "text": "studentsID", "type": "postback"
+        }
+    }, { hidden: true });   
+    var studentsID = document.getElementById("studentsID"); studentsID.disabled = true;  
+}
+function showPGLoginForm() {
+    var student = document.querySelectorAll("[id=\"student\"]");
+    Bots.sendMessage({
+        "messagePayload": {
+            "postback": {
+                "variables": {
+                    "student": student[student.length - 1].value
+                },
+                "action": "submitRequest",
+                "system.state": "openPGLoginForm"
+            },
+            "text": "student", "type": "postback"
+        }
+    }, { hidden: true });   
+    var student = document.getElementById("student"); student.disabled = true;  
+}
+function showPMSSSLoginform() {
+    var key = document.querySelectorAll("[id=\"key\"]");
+    var studentID = document.querySelectorAll("[id=\"studentID\"]");
+    Bots.sendMessage({
+        "messagePayload": {
+            "postback": {
+                "variables": {
+                    "key": key[key.length - 1].value,
+                    "studentID": studentID[studentID.length - 1].value
+                },
+                "action": "submitRequest",
+                "system.state": "openPMSSSLoginForm"
+            },
+            "text": "Login", "type": "postback"
+        }
+    }, { hidden: true });   
+    var key = document.getElementById("key"); key.disabled = true;
+    var studentID = document.getElementById("studentID"); studentID.disabled = true;
+}
+function showPragatiSakshamLoginform() {
+    var key = document.querySelectorAll("[id=\"key\"]");
+    var psStudentID = document.querySelectorAll("[id=\"psStudentID\"]");
+    Bots.sendMessage({
+        "messagePayload": {
+            "postback": {
+                "variables": {
+                    "key": key[key.length - 1].value,
+                    "psStudentID": psStudentID[psStudentID.length - 1].value
+                },
+                "action": "submitRequest",
+                "system.state": "openPragatiSakshamLoginForm"
+            },
+            "text": "Login", "type": "postback"
+        }
+    }, { hidden: true });   
+    var key = document.getElementById("key"); key.disabled = true;
+    var psStudentID = document.getElementById("psStudentID"); psStudentID.disabled = true;
+}
+

@@ -9,6 +9,7 @@ import 'package:login/noti.dart';
 import 'package:login/personal.dart';
 import 'package:login/scheme.dart';
 import 'package:login/searchfield.dart';
+import 'package:login/searchpage.dart';
 
 final List<String> imgList = [
   "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg"
@@ -69,16 +70,20 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     TextFormField(
                       decoration: InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Colors.grey,
-                            size: 26,
+                          prefixIcon: IconButton(
+                            icon: Icon(Icons.search),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SearchPage()));
+                            },
                           ),
                           floatingLabelBehavior: FloatingLabelBehavior.never,
                           labelText: "Search Your Topic",
                           labelStyle: TextStyle(color: Colors.grey),
                           filled: true,
-                          fillColor: Colors.white,
+                          fillColor: const Color.fromARGB(255, 255, 0, 0),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(40),
                           ),

@@ -1,6 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:login/Fellowship.dart';
 import 'package:login/email.dart';
 import 'package:login/help.dart';
 import 'package:login/index.dart';
@@ -12,6 +14,7 @@ import 'package:login/noti.dart';
 import 'package:login/personal.dart';
 import 'package:login/scheme.dart';
 import 'package:login/usermodel.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class insthome extends StatefulWidget {
   const insthome({Key? key}) : super(key: key);
@@ -21,6 +24,35 @@ class insthome extends StatefulWidget {
 }
 
 class _insthomeState extends State<insthome> {
+  final Uri _url =
+      Uri.parse('https://www.staysafeonline.in/quad-cyber-challenge');
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+
+  final Uri _url1 = Uri.parse('https://1crore.aicte-india.org/');
+  Future<void> _launchUrl1() async {
+    if (!await launchUrl(_url1)) {
+      throw Exception('Could not launch $_url1');
+    }
+  }
+
+  final Uri _url2 = Uri.parse('https://staysafeonline.in/quiz');
+  Future<void> _launchUrl2() async {
+    if (!await launchUrl(_url2)) {
+      throw Exception('Could not launch $_url2');
+    }
+  }
+
+  final Uri _url3 = Uri.parse('https://crypticsingh.com/index.aspx');
+  Future<void> _launchUrl3() async {
+    if (!await launchUrl(_url3)) {
+      throw Exception('Could not launch $_url3');
+    }
+  }
+
   User? user = FirebaseAuth.instance.currentUser;
   Usermodel usermodel = Usermodel();
   void initState() {
@@ -50,8 +82,8 @@ class _insthomeState extends State<insthome> {
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(60),
-                      bottomRight: Radius.circular(60),
+                      bottomLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40),
                     ),
                     gradient: LinearGradient(
                         colors: [Colors.blue, Color.fromARGB(255, 3, 54, 96)],
@@ -59,34 +91,11 @@ class _insthomeState extends State<insthome> {
                         end: Alignment.bottomCenter)),
               ),
               bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(90),
+                  preferredSize: Size.fromHeight(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding:
-                            EdgeInsets.only(left: 30, right: 30, bottom: 30),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              suffixIcon: Icon(
-                                Icons.search,
-                                color: Colors.blue,
-                                size: 26,
-                              ),
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.never,
-                              hintText: "         Search Your Topic",
-                              labelStyle: TextStyle(color: Colors.grey),
-                              filled: true,
-                              fillColor: Colors.white,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                              ),
-                              isDense: true),
-                        ),
-                      ),
-                    ],
+                    children: [],
                   )),
               backgroundColor: Color.fromARGB(255, 255, 0, 0),
               title: const Text(
@@ -105,170 +114,289 @@ class _insthomeState extends State<insthome> {
                   icon: Icon(Icons.lightbulb),
                 ),
               ]),
-          body: Container(
-            child: Container(
-              child: GridView(
-                padding: EdgeInsets.all(12),
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => personal()));
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: const LinearGradient(colors: [
-                            Colors.blue,
-                            Color.fromARGB(255, 3, 54, 96)
-                          ])),
-                      child: Column(
-                        children: [
-                          Image.asset("assets/org.png"),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "ABOUT",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+          body: Column(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              CarouselSlider(
+                items: [
+                  //1st Image of Slider
+                  Container(
+                    margin: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
+                      ],
+                      borderRadius: BorderRadius.circular(.0),
+                      image: DecorationImage(
+                        image: AssetImage('assets/vj4.jpeg'),
+                        fit: BoxFit.fill,
                       ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => instapprove()));
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: const LinearGradient(colors: [
-                            Colors.blue,
-                            Color.fromARGB(255, 3, 54, 96)
-                          ])),
-                      child: Column(
-                        children: [
-                          Image.asset("assets/app.png"),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "APPROVAL",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
+                    child: ListTile(
+                      onTap: _launchUrl,
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => IndexPage()));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: const LinearGradient(colors: [
-                            Colors.blue,
-                            Color.fromARGB(255, 3, 54, 96)
-                          ])),
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          Image.asset("assets/meet2.png"),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "MEETINGS",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+                  //2nd Image of Slider
+                  Container(
+                    margin: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
+                      ],
+                      borderRadius: BorderRadius.circular(4.0),
+                      image: DecorationImage(
+                        image: AssetImage('assets/vj2.png'),
+                        fit: BoxFit.fill,
                       ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => notifi()));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: const LinearGradient(colors: [
-                            Colors.blue,
-                            Color.fromARGB(255, 3, 54, 96)
-                          ])),
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          Image.asset("assets/ev.png"),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "EVENTS",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
+                    child: ListTile(
+                      onTap: _launchUrl1,
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => scheme()));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: const LinearGradient(colors: [
-                            Colors.blue,
-                            Color.fromARGB(255, 3, 54, 96)
-                          ])),
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          Image.asset("assets/scheme.png"),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "SCHEMES",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+
+                  //3rd Image of Slider
+                  Container(
+                    margin: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
+                      ],
+                      borderRadius: BorderRadius.circular(4.0),
+                      image: DecorationImage(
+                        image: AssetImage('assets/vj3.jpg'),
+                        fit: BoxFit.fill,
                       ),
+                    ),
+                    child: ListTile(
+                      onTap: _launchUrl3,
+                    ),
+                  ),
+
+                  //4th Image of Slider
+                  Container(
+                    margin: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
+                      ],
+                      borderRadius: BorderRadius.circular(4.0),
+                      image: DecorationImage(
+                        image: AssetImage('assets/vj1.jpeg'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: ListTile(
+                      onTap: _launchUrl2,
+                    ),
+                  ),
+
+                  //5th Image of Slider
+                  Container(
+                    margin: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
+                      ],
+                      borderRadius: BorderRadius.circular(4.0),
+                      image: DecorationImage(
+                        image: AssetImage('assets/vj2.png'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: ListTile(
+                      onTap: _launchUrl1,
                     ),
                   ),
                 ],
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 30,
-                    crossAxisSpacing: 20),
+
+                //Slider Container properties
+                options: CarouselOptions(
+                  height: 190,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  aspectRatio: 50 / 9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  viewportFraction: 0.99,
+                ),
               ),
-            ),
+              Expanded(
+                child: GridView.count(
+                  padding:
+                      EdgeInsets.only(left: 13, top: 10, bottom: 10, right: 13),
+                  crossAxisCount: 2,
+                  childAspectRatio: .90,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => personal()));
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: const LinearGradient(colors: [
+                              Colors.blue,
+                              Color.fromARGB(255, 3, 54, 96)
+                            ])),
+                        child: Column(
+                          children: [
+                            Image.asset("assets/org.png"),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "ABOUT",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => instapprove()));
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: const LinearGradient(colors: [
+                              Colors.blue,
+                              Color.fromARGB(255, 3, 54, 96)
+                            ])),
+                        child: Column(
+                          children: [
+                            Image.asset("assets/app.png"),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "APPROVAL",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => IndexPage()));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: const LinearGradient(colors: [
+                              Colors.blue,
+                              Color.fromARGB(255, 3, 54, 96)
+                            ])),
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Image.asset("assets/meet2.png"),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "MEETINGS",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => notifi()));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: const LinearGradient(colors: [
+                              Colors.blue,
+                              Color.fromARGB(255, 3, 54, 96)
+                            ])),
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Image.asset("assets/ev.png"),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "EVENTS",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => scheme()));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: const LinearGradient(colors: [
+                              Colors.blue,
+                              Color.fromARGB(255, 3, 54, 96)
+                            ])),
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Image.asset("assets/scheme.png"),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "SCHEMES",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {

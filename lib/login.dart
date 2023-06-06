@@ -50,6 +50,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _obsecuretext = true;
   static Future<User?> loginUsingEmailPassword(
       {required String email,
       required String password,
@@ -157,21 +158,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 26.0,
                   ),
                   Form(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: TextFormField(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: (value) {
-                        RegExp regex = new RegExp(r'^.{6,}$');
-                        if (value!.isEmpty) {
-                          return ("Please Enter your Password");
-                        }
-                        if (!regex.hasMatch(value)) {
-                          return ("Please Enter Valid Password Min. of 6 charater ");
-                        }
-                      },
                       controller: _passwordController,
-                      obscureText: true,
                       decoration: InputDecoration(
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _obsecuretext = !_obsecuretext;
+                            });
+                          },
+                          child: Icon(_obsecuretext
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        ),
                         fillColor: Colors.white30,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -190,6 +189,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Color.fromARGB(255, 145, 138, 138),
                         ),
                       ),
+                      obscureText: _obsecuretext,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) {
+                        RegExp regex = new RegExp(r'^.{6,}$');
+                        if (value!.isEmpty) {
+                          return ("Please Enter your Password");
+                        }
+                        if (!regex.hasMatch(value)) {
+                          return ("Please Enter Valid Password Min. of 6 charater ");
+                        }
+                      },
                     ),
                   ),
                   SizedBox(
