@@ -24,7 +24,7 @@ class _approvebranchState extends State<approvebranch> {
                   end: Alignment.bottomCenter)),
         ),
         title: const Text(
-          "BRANCH APPROVALS",
+          "BRANCH APPROVAL",
           style: TextStyle(
             fontSize: 23,
           ),
