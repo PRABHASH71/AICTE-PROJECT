@@ -60,6 +60,7 @@ dependencies:
   flutter_local_notifications: ^9.8.0+1
   rxdart: ^0.27.5
   carousel_slider: ^4.1.1
+  liquid_pull_to_refresh: ^3.0.0
  
   
  

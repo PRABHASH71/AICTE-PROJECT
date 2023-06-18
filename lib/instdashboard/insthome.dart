@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:login/Fellowship.dart';
 import 'package:login/email.dart';
 import 'package:login/help.dart';
@@ -67,6 +68,10 @@ class _insthomeState extends State<insthome> {
     });
   }
 
+  Future<void> _handlerefresh() async {
+    return await Future.delayed(Duration(milliseconds: 500));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,289 +119,306 @@ class _insthomeState extends State<insthome> {
                   icon: Icon(Icons.lightbulb),
                 ),
               ]),
-          body: Column(
-            children: [
-              SizedBox(
-                height: 10,
-              ),
-              CarouselSlider(
-                items: [
-                  //1st Image of Slider
-                  Container(
-                    margin: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
-                      ],
-                      borderRadius: BorderRadius.circular(.0),
-                      image: DecorationImage(
-                        image: AssetImage('assets/vj4.jpeg'),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    child: ListTile(
-                      onTap: _launchUrl,
-                    ),
-                  ),
-                  //2nd Image of Slider
-                  Container(
-                    margin: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
-                      ],
-                      borderRadius: BorderRadius.circular(4.0),
-                      image: DecorationImage(
-                        image: AssetImage('assets/vj2.png'),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    child: ListTile(
-                      onTap: _launchUrl1,
-                    ),
-                  ),
-
-                  //3rd Image of Slider
-                  Container(
-                    margin: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
-                      ],
-                      borderRadius: BorderRadius.circular(4.0),
-                      image: DecorationImage(
-                        image: AssetImage('assets/vj3.jpg'),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    child: ListTile(
-                      onTap: _launchUrl3,
-                    ),
-                  ),
-
-                  //4th Image of Slider
-                  Container(
-                    margin: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
-                      ],
-                      borderRadius: BorderRadius.circular(4.0),
-                      image: DecorationImage(
-                        image: AssetImage('assets/vj1.jpeg'),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    child: ListTile(
-                      onTap: _launchUrl2,
-                    ),
-                  ),
-
-                  //5th Image of Slider
-                  Container(
-                    margin: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 8, color: Color.fromARGB(255, 0, 0, 0)),
-                      ],
-                      borderRadius: BorderRadius.circular(4.0),
-                      image: DecorationImage(
-                        image: AssetImage('assets/vj2.png'),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    child: ListTile(
-                      onTap: _launchUrl1,
-                    ),
-                  ),
-                ],
-
-                //Slider Container properties
-                options: CarouselOptions(
-                  height: 190,
-                  enlargeCenterPage: true,
-                  autoPlay: true,
-                  aspectRatio: 50 / 9,
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  viewportFraction: 0.99,
+          body: LiquidPullToRefresh(
+            onRefresh: _handlerefresh,
+            color: Colors.blue,
+            height: 200,
+            animSpeedFactor: 5,
+            showChildOpacityTransition: false,
+            backgroundColor: Color.fromARGB(255, 3, 249, 249),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 10,
                 ),
-              ),
-              Expanded(
-                child: GridView.count(
-                  padding:
-                      EdgeInsets.only(left: 13, top: 10, bottom: 10, right: 13),
-                  crossAxisCount: 2,
-                  childAspectRatio: .90,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => personal()));
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: const LinearGradient(colors: [
-                              Colors.blue,
-                              Color.fromARGB(255, 3, 54, 96)
-                            ])),
-                        child: Column(
-                          children: [
-                            Image.asset("assets/org.png"),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "ABOUT",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
+                CarouselSlider(
+                  items: [
+                    //1st Image of Slider
+                    Container(
+                      margin: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 8,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ],
+                        borderRadius: BorderRadius.circular(.0),
+                        image: DecorationImage(
+                          image: AssetImage('assets/vj4.jpeg'),
+                          fit: BoxFit.fill,
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => instapprove()));
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: const LinearGradient(colors: [
-                              Colors.blue,
-                              Color.fromARGB(255, 3, 54, 96)
-                            ])),
-                        child: Column(
-                          children: [
-                            Image.asset("assets/app.png"),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "APPROVAL",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
+                      child: ListTile(
+                        onTap: _launchUrl,
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => IndexPage()));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: const LinearGradient(colors: [
-                              Colors.blue,
-                              Color.fromARGB(255, 3, 54, 96)
-                            ])),
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Image.asset("assets/meet2.png"),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "MEETINGS",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
+                    //2nd Image of Slider
+                    Container(
+                      margin: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 8,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ],
+                        borderRadius: BorderRadius.circular(4.0),
+                        image: DecorationImage(
+                          image: AssetImage('assets/vj2.png'),
+                          fit: BoxFit.fill,
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => notifi()));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: const LinearGradient(colors: [
-                              Colors.blue,
-                              Color.fromARGB(255, 3, 54, 96)
-                            ])),
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Image.asset("assets/ev.png"),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "EVENTS",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
+                      child: ListTile(
+                        onTap: _launchUrl1,
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => scheme()));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: const LinearGradient(colors: [
-                              Colors.blue,
-                              Color.fromARGB(255, 3, 54, 96)
-                            ])),
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Image.asset("assets/scheme.png"),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "SCHEMES",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
+
+                    //3rd Image of Slider
+                    Container(
+                      margin: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 8,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ],
+                        borderRadius: BorderRadius.circular(4.0),
+                        image: DecorationImage(
+                          image: AssetImage('assets/vj3.jpg'),
+                          fit: BoxFit.fill,
                         ),
+                      ),
+                      child: ListTile(
+                        onTap: _launchUrl3,
+                      ),
+                    ),
+
+                    //4th Image of Slider
+                    Container(
+                      margin: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 8,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ],
+                        borderRadius: BorderRadius.circular(4.0),
+                        image: DecorationImage(
+                          image: AssetImage('assets/vj1.jpeg'),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      child: ListTile(
+                        onTap: _launchUrl2,
+                      ),
+                    ),
+
+                    //5th Image of Slider
+                    Container(
+                      margin: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 8,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ],
+                        borderRadius: BorderRadius.circular(4.0),
+                        image: DecorationImage(
+                          image: AssetImage('assets/vj2.png'),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      child: ListTile(
+                        onTap: _launchUrl1,
                       ),
                     ),
                   ],
+
+                  //Slider Container properties
+                  options: CarouselOptions(
+                    height: 190,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    aspectRatio: 50 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    viewportFraction: 0.99,
+                  ),
                 ),
-              ),
-            ],
+                Expanded(
+                  child: GridView.count(
+                    padding: EdgeInsets.only(
+                        left: 13, top: 10, bottom: 10, right: 13),
+                    crossAxisCount: 2,
+                    childAspectRatio: .90,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    children: <Widget>[
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => personal()));
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(colors: [
+                                Colors.blue,
+                                Color.fromARGB(255, 3, 54, 96)
+                              ])),
+                          child: Column(
+                            children: [
+                              Image.asset("assets/org.png"),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "ABOUT",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => instapprove()));
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(colors: [
+                                Colors.blue,
+                                Color.fromARGB(255, 3, 54, 96)
+                              ])),
+                          child: Column(
+                            children: [
+                              Image.asset("assets/app.png"),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "APPROVAL",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => IndexPage()));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(colors: [
+                                Colors.blue,
+                                Color.fromARGB(255, 3, 54, 96)
+                              ])),
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Image.asset("assets/meet2.png"),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "MEETINGS",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => notifi()));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(colors: [
+                                Colors.blue,
+                                Color.fromARGB(255, 3, 54, 96)
+                              ])),
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Image.asset("assets/ev.png"),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "EVENTS",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => scheme()));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(colors: [
+                                Colors.blue,
+                                Color.fromARGB(255, 3, 54, 96)
+                              ])),
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Image.asset("assets/scheme.png"),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "SCHEMES",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
