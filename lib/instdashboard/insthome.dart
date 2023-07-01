@@ -3,18 +3,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:login/Fellowship.dart';
-import 'package:login/email.dart';
-import 'package:login/help.dart';
-import 'package:login/index.dart';
-import 'package:login/instapp.dart';
-import 'package:login/instmeet.dart';
+import 'package:login/fellowship/Fellowship.dart';
+import 'package:login/emaildesk/email.dart';
+import 'package:login/helpdesk/help.dart';
+import 'package:login/meetings/index.dart';
+import 'package:login/ApproveRequest/instapp.dart';
+import 'package:login/meetings/instmeet.dart';
 
-import 'package:login/meet.dart';
-import 'package:login/noti.dart';
-import 'package:login/personal.dart';
-import 'package:login/scheme.dart';
-import 'package:login/usermodel.dart';
+import 'package:login/meetings/meet.dart';
+import 'package:login/callender/noti.dart';
+import 'package:login/aboutaicte/personal.dart';
+import 'package:login/shemes/scheme.dart';
+import 'package:login/meetings/usermodel.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class insthome extends StatefulWidget {

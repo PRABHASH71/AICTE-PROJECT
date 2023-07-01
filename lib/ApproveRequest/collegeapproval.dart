@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:login/collegemodel.dart';
-import 'package:login/collegeremote.dart';
+import 'package:login/FetchApproval/collegemodel.dart';
+import 'package:login/FetchApproval/collegeremote.dart';
 
 class college extends StatefulWidget {
   const college({Key? key}) : super(key: key);
@@ -117,7 +117,6 @@ class _collegeState extends State<college> {
                           border: OutlineInputBorder(),
                           hintText: "Land Area in Acres"),
                     ),
-
                     SizedBox(
                       child: Text("ATTACH PDF OR IMAGE HERE"),
                       height: 40,

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login/instdashboard/insthome.dart';
-import 'package:login/usermodel.dart';
+import 'package:login/meetings/usermodel.dart';
 
 class insreg extends StatefulWidget {
   const insreg({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login/Fellowship.dart';
+import 'package:login/fellowship/Fellowship.dart';
 
 class personal extends StatefulWidget {
   const personal({Key? key}) : super(key: key);

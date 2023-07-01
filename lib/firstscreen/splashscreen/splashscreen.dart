@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:im_stepper/stepper.dart';
-import 'package:login/first.dart';
+import 'package:login/firstscreen/first.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {

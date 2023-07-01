@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:login/login.dart';
+import 'package:login/adminlogin/login.dart';
 import 'package:login/main.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
@@ -173,7 +173,7 @@ class _signState extends State<sign> {
                                 MaterialPageRoute(
                                     builder: (context) => HomePage()));
                           } else {
-                            Fluttertoast.showToast(msg: "MISMATCH FIELDS");
+                            Fluttertoast.showToast(msg: "USER ALREADY EXISTS");
                           }
                         },
                         child: Text("REGISTER"),

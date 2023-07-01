@@ -9,8 +9,7 @@ import 'package:login/FetchApproval/approvebranch.dart';
 
 import 'package:login/FetchApproval/approvecollege.dart';
 import 'package:login/ApproveRequest/collegeapproval.dart';
-import 'package:login/get_details.dart';
-import 'package:login/tracker.dart';
+
 import 'package:snapshot/snapshot.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';

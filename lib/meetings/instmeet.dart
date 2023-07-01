@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login/usermodel.dart';
+import 'package:login/meetings/usermodel.dart';
 
 class instMeet extends StatefulWidget {
   instMeet({Key? key}) : super(key: key);

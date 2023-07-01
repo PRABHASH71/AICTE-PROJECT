@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:login/inslogin.dart';
+import 'package:login/instlogin/inslogin.dart';
 import 'package:login/instdashboard/insthome.dart';
-import 'package:login/login.dart';
-import 'package:login/scheme.dart';
+import 'package:login/adminlogin/login.dart';
+import 'package:login/shemes/scheme.dart';
 
 class first extends StatefulWidget {
   const first({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:login/modelsnewbranch.dart';
-import 'package:login/remotedatbranch.dart';
+import 'package:login/FetchApproval/modelsnewbranch.dart';
+import 'package:login/FetchApproval/remotedatbranch.dart';
 
 class newbranch extends StatefulWidget {
   const newbranch({Key? key}) : super(key: key);

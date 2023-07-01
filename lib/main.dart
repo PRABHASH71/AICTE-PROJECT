@@ -2,17 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:login/event_provider.dart';
-import 'package:login/first.dart';
-import 'package:login/inslogin.dart';
-import 'package:login/insreg.dart';
+import 'package:login/callender/event_provider.dart';
+import 'package:login/firstscreen/first.dart';
+import 'package:login/instlogin/inslogin.dart';
+import 'package:login/instdashboard/insreg.dart';
 import 'package:login/instdashboard/insthome.dart';
-import 'package:login/instmeet.dart';
-import 'package:login/login.dart';
-import 'package:login/noti.dart';
+import 'package:login/meetings/instmeet.dart';
+import 'package:login/adminlogin/login.dart';
+import 'package:login/callender/noti.dart';
 import 'package:login/admindashboard/profile_screen.dart';
-import 'package:login/sign.dart';
-import 'package:login/splashscreen.dart';
+import 'package:login/adminlogin/sign.dart';
+import 'package:login/firstscreen/splashscreen/splashscreen.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {

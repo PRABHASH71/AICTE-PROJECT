@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:login/collegemodel.dart';
+import 'package:login/FetchApproval/collegemodel.dart';
 
 class FirestoreHelper1 {
   static Stream<List<UserModel5>> read() {

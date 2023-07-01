@@ -4,7 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:login/modelclass.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:login/fellowship/modelclass.dart';
 import 'package:path_provider/path_provider.dart';
 
 class approval extends StatefulWidget {
@@ -15,6 +16,10 @@ class approval extends StatefulWidget {
 }
 
 class _approvalState extends State<approval> {
+  Future<void> _handlerefresh() async {
+    return await Future.delayed(Duration(milliseconds: 500));
+  }
+
   List<String> docIDs = [];
 
   Future getDocId() async {
@@ -43,30 +48,37 @@ class _approvalState extends State<approval> {
               ),
             ),
           ),
-          body: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                  child: FutureBuilder(
-                future: getDocId(),
-                builder: (context, snapshot) {
-                  return ListView.builder(
-                    itemCount: docIDs.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.all(1.0),
-                        child: ListTile(
-                          title: GetUserName(
-                              documentId: docIDs[index], doc: docIDs[index]),
-                        ),
-                      );
-                    },
-                  );
-                },
-              )),
-            ],
-          )),
+          body: LiquidPullToRefresh(
+            onRefresh: _handlerefresh,
+            color: Colors.blue,
+            height: 200,
+            animSpeedFactor: 5,
+            backgroundColor: Color.fromARGB(255, 237, 255, 255),
+            child: Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                    child: FutureBuilder(
+                  future: getDocId(),
+                  builder: (context, snapshot) {
+                    return ListView.builder(
+                      itemCount: docIDs.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.all(1.0),
+                          child: ListTile(
+                            title: GetUserName(
+                                documentId: docIDs[index], doc: docIDs[index]),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                )),
+              ],
+            )),
+          ),
         ),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(1),

@@ -2,20 +2,19 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:login/Fellowship.dart';
+import 'package:login/fellowship/Fellowship.dart';
 import 'package:login/ApproveRequest/approvaladmin.dart';
 
-import 'package:login/email.dart';
-import 'package:login/help.dart';
-import 'package:login/index.dart';
-import 'package:login/login.dart';
+import 'package:login/emaildesk/email.dart';
+import 'package:login/helpdesk/help.dart';
+import 'package:login/meetings/index.dart';
+import 'package:login/adminlogin/login.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:login/meet.dart';
-import 'package:login/noti.dart';
-import 'package:login/personal.dart';
-import 'package:login/profile.dart';
-import 'package:login/scheme.dart';
-import 'package:login/searchpage.dart';
+import 'package:login/meetings/meet.dart';
+import 'package:login/callender/noti.dart';
+import 'package:login/aboutaicte/personal.dart';
+
+import 'package:login/shemes/scheme.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);

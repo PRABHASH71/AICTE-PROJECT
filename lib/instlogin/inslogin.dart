@@ -1,24 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:login/first.dart';
-import 'package:login/noti.dart';
-import 'package:login/profile.dart';
-import 'package:login/admindashboard/profile_screen.dart';
-import 'package:login/sign.dart';
-import 'package:form_field_validator/form_field_validator.dart';
+import 'package:login/instlogin/forget.dart';
+import 'package:login/instdashboard/insthome.dart';
 import 'package:lottie/lottie.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class inslog extends StatefulWidget {
+  const inslog({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<inslog> createState() => _inslogState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _inslogState extends State<inslog> {
   bool _obsecuretext = true;
   final _formkey = GlobalKey<FormState>();
   final TextEditingController emailController = new TextEditingController();
@@ -49,15 +43,10 @@ class _HomePageState extends State<HomePage> {
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.mail),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 15, 20),
-        fillColor: Colors.white30,
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Color.fromARGB(255, 54, 53, 53)),
-        ),
-        filled: true,
       ),
     );
     final passwordField = TextFormField(
@@ -88,15 +77,10 @@ class _HomePageState extends State<HomePage> {
         ),
         prefixIcon: Icon(Icons.vpn_key),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 15, 20),
-        fillColor: Colors.white30,
+        hintText: "Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Color.fromARGB(255, 54, 53, 53)),
-        ),
-        filled: true,
-        hintText: "Password",
       ),
       obscureText: _obsecuretext,
     );
@@ -134,7 +118,7 @@ class _HomePageState extends State<HomePage> {
             child: SingleChildScrollView(
               child: Container(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(36, 15, 36, 36),
+                  padding: EdgeInsets.fromLTRB(36, 5, 36, 36),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,14 +162,14 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Text(
-                                  "Admin not Registered? ",
+                                  "Institution not Registered? ",
                                   style: TextStyle(
                                     fontSize: 15,
                                   ),
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pushNamed(context, 'sign');
+                                    Navigator.pushNamed(context, 'insreg');
                                   },
                                   child: Text(
                                     "Sign Up",
@@ -219,7 +203,7 @@ class _HomePageState extends State<HomePage> {
           .then((uid) => {
                 Fluttertoast.showToast(msg: "Login Successfull"),
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => profile())),
+                    MaterialPageRoute(builder: (context) => insthome())),
               })
           .catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
