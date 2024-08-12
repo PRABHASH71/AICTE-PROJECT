@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login/callender/event_provider.dart';
 import 'package:login/firstscreen/first.dart';
+//kdkk
 import 'package:login/instlogin/inslogin.dart';
 import 'package:login/instdashboard/insreg.dart';
 import 'package:login/instdashboard/insthome.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
+  // has added new code
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
         create: (context) => EventProvider(),
